@@ -27,3 +27,9 @@ jobs:
       run: ls
     - name: Publish
       run: dotnet publish WebApi.csproj -c Release -o website
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: website
+        path: WebApi/website/**
+        if-no-files-found: error

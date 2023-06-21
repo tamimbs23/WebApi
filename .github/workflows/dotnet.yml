@@ -23,5 +23,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Check all files
+      run: ls
     - name: Publish
-      run: dotnet publish WebApi/WebApi.csproj -c Release -o website
+      run: dotnet publish WebApi.csproj -c Release -o website

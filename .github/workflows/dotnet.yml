@@ -23,10 +23,10 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Check all files
-      run: ls
     - name: Publish
       run: dotnet publish WebApi.csproj -c Release -o website
+    - name: Check all files
+      run: ls
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:

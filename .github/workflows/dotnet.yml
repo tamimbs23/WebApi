@@ -33,16 +33,16 @@ jobs:
         name: website
         path: website/**
         if-no-files-found: error
-    - name: Check all files
-      run: ls
-    - name: Check working directory
-      run: pwd
   
   deploy:
     needs: build
     runs-on: ubuntu-22.04
 
     steps:
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: website
     - name: Setup SSH
       uses: webfactory/ssh-agent@v0.8.0
       with:
@@ -52,4 +52,4 @@ jobs:
     - name: Check working directory
       run: pwd
     - name: Copy files to EC2 
-      run: scp -r -o StrictHostKeyChecking=no ./website/* ubuntu@16.171.159.5:/var/www/webapi
+      run: scp -r -o StrictHostKeyChecking=no ${{ github.workspace }}/website/** ubuntu@16.171.159.5:/var/www/webapi

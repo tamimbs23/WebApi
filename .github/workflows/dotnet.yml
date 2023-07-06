@@ -52,4 +52,4 @@ jobs:
     - name: Check working directory
       run: pwd
     - name: Copy files to EC2 
-      run: scp -r -o StrictHostKeyChecking=no ${{ github.workspace }}/website/** ubuntu@16.171.159.5:/var/www/webapi
+      run: scp -r -o StrictHostKeyChecking=no ${{ github.workspace }}/** ubuntu@16.171.159.5:/var/www/webapi

@@ -33,6 +33,8 @@ jobs:
         name: website
         path: website/**
         if-no-files-found: error
+    - name: Check all files
+      run: ls
   
   deploy:
     needs: build
@@ -43,5 +45,7 @@ jobs:
       uses: webfactory/ssh-agent@v0.8.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Check all files
+      run: ls
     - name: Copy files to EC2 
       run: scp -r -o StrictHostKeyChecking=no website/** ubuntu@16.171.159.5:/var/www/webapi

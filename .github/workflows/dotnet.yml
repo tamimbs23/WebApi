@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish WebApi.csproj -c Release -o website
+      run: dotnet publish WebApi.csproj -c Release -o ./website
     - name: Check all files
       run: ls
     - name: Upload a Build Artifact
@@ -52,4 +52,4 @@ jobs:
     - name: Check working directory
       run: pwd
     - name: Copy files to EC2 
-      run: scp -r -o StrictHostKeyChecking=no website/* ubuntu@16.171.159.5:/var/www/webapi
+      run: scp -r -o StrictHostKeyChecking=no ./website/* ubuntu@16.171.159.5:/var/www/webapi

@@ -35,6 +35,8 @@ jobs:
         if-no-files-found: error
     - name: Check all files
       run: ls
+    - name: Check working directory
+      run: pwd
   
   deploy:
     needs: build
@@ -47,5 +49,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Check all files
       run: ls
+    - name: Check working directory
+      run: pwd
     - name: Copy files to EC2 
-      run: scp -r -o StrictHostKeyChecking=no website/** ubuntu@16.171.159.5:/var/www/webapi
+      run: scp -r -o StrictHostKeyChecking=no website/* ubuntu@16.171.159.5:/var/www/webapi
